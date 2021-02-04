@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import video from "../../videos/video-2.mp4";
+import DarkVideo from "../../videos/video.mp4";
+import LightVideo from "../../videos/video-2.mp4";
 import { Button } from "../ButtonElement";
 import "./Animation.css";
 import {
@@ -22,10 +23,28 @@ const HeroSection = () => {
     setHover(!hover);
   };
 
+  let src = null;
+
+  const userPrefersDark =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const userPrefersLight =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: light)").matches;
+
+  if (userPrefersDark) {
+    src = DarkVideo;
+  }
+
+  if (userPrefersLight) {
+    src = LightVideo;
+  }
+
   return (
     <HeroContainer id="home">
       <HeroBg>
-        <VideoBg autoPlay loop muted src={video} type="video/mp4"></VideoBg>
+        <VideoBg autoPlay loop muted src={src} type="video/mp4"></VideoBg>
       </HeroBg>
       <HeroContent>
         <HeroP>Hello, I'm</HeroP>

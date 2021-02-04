@@ -17,6 +17,13 @@ export const Nav = styled.nav`
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background: ${({ scrollNav }) => (scrollNav ? "#090909" : "transparent")};
+  }
+  @media (prefers-color-scheme: light) {
+    background: ${({ scrollNav }) => (scrollNav ? "#fafafa" : "transparent")};
+  }
 `;
 
 export const NavbarContainer = styled.div`
